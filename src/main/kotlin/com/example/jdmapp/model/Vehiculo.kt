@@ -8,8 +8,8 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "nissan")
-class Nissan {
+@Table(name = "vehiculo")
+class Vehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(updatable = false)

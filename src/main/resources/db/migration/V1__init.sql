@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS nissan (
+CREATE TABLE IF NOT EXISTS vehiculo (
     id SERIAL,
     modelo VARCHAR(100) NOT NULL,
     motor VARCHAR(100) NOT NULL,
