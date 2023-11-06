@@ -8,3 +8,4 @@ import org.springframework.stereotype.Repository
 interface VehiculoRepository: JpaRepository<Vehiculo, Long?>{
     fun findById (id: Long?): Vehiculo?
 }
+

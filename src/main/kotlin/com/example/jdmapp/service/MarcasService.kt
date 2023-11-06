@@ -1,35 +1,34 @@
 package com.example.jdmapp.service
 
+import com.example.jdmapp.model.Marcas
 import com.example.jdmapp.model.Vehiculo
-import com.example.jdmapp.repository.VehiculoRepository
+import com.example.jdmapp.repository.MarcasRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 
-@Service
-class VehiculoService {
+class MarcasService {
     @Autowired
-    lateinit var vehiculoRepository: VehiculoRepository
-    fun list ():List<Vehiculo>{
-        return vehiculoRepository.findAll()
+    lateinit var marcasRepository: MarcasRepository
+    fun list ():List<Marcas>{
+        return marcasRepository.findAll()
     }
-    fun save(vehiculo: Vehiculo): Vehiculo{
+    fun save(marcas: Marcas): Marcas {
         try{
-            return vehiculoRepository.save(vehiculo)
+            return marcasRepository.save(marcas)
         }
         catch (ex:Exception){
             throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
-    fun updateMotor(vehiculo: Vehiculo): Vehiculo{
+    fun updateMotor(marcas: Marcas): Marcas {
         try{
-            val response = vehiculoRepository.findById(vehiculo.id)
+            val response = marcasRepository.findById(marcas.id)
                     ?: throw Exception("ID no existe")
             response.apply {
-                motor=vehiculo.motor //un atributo del modelo
+                modelo=marcas.modelo //un atributo del modelo
             }
-            return vehiculoRepository.save(response)
+            return marcasRepository.save(response)
         }
         catch (ex:Exception){
             throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
@@ -37,16 +36,16 @@ class VehiculoService {
     }
     fun delete (id: Long?):Boolean?{
         try{
-            val response = vehiculoRepository.findById(id)
+            val response = marcasRepository.findById(id)
                     ?: throw Exception("ID no existe")
-            vehiculoRepository.deleteById(id!!)
+            marcasRepository.deleteById(id!!)
             return true
         }
         catch (ex:Exception){
             throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
         }
     }
-    fun listById (id:Long?):Vehiculo?{
-        return vehiculoRepository.findById(id)
+    fun listById (id:Long?): Marcas?{
+        return marcasRepository.findById(id)
     }
 }

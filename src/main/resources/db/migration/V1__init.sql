@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS vehiculo (
     PRIMARY KEY (id)
     );
 
-CREATE TABLE IF NOT EXISTS mitsubishie (
+CREATE TABLE IF NOT EXISTS marcas (
     id SERIAL,
     modelo VARCHAR(100) NOT NULL,
-    motor VARCHAR(100) NOT NULL,
-    nissan_id INT NOT NULL,
+    ano VARCHAR(100) NOT NULL,
+    vehiculo_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (nissan_id ) REFERENCES nissan(id)
+    FOREIGN KEY (vehiculo_id ) REFERENCES vehiculo(id)
     );
